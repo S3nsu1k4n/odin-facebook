@@ -15,5 +15,13 @@
 
 <div class="posts">
 <h3>Posts</h3>
-  <p>No posts yet!</p>
+  <div class="new_post">
+    <%= link_to "New Post", new_post_path %>
+  </div>
+  <% @user.posts.each do |post| %>
+    <div class="post">
+      <%= post.title %>
+      <%= post.content %>
+    </div>
+  <% end %>
 </div>
