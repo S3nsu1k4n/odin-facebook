@@ -2,18 +2,13 @@
 
 <%= render "flash_message" %>
 
-<div class="nav">
-  <ul>
-    <li><%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete } %></li>
-  </ul>
-</div>
+<%= render "nav" %>
 
 <div class="photo">
-  <img src="" alt="profile photo" width="360" height="360">
+  <img src=<%= @gravatar_url %> alt="profile photo" width="64" height="64" style="border-radius: 50%">
 </div>
 
 <div class="information">
-<h3>Information</h3>
   <p class="name">Name: <%= @user.name %></p>
   <p class="email">Email: <%= @user.email %></p>
 </div>
