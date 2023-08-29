@@ -1,11 +1,12 @@
-# README
+# Odin-Facebook
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Building a large portion of the core Facebook user functionality in this project using ruby on rails.
 
-Things you may want to cover:
+This is the [final rails project](https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-project) for the course which gives a chance to take a relatively high level set of requirements and turn it into a functioning website. 
 
-* Ruby version
+* Ruby version: 3.2.2
+
+* Rails version: 7.0.7.2
 
 * System dependencies
 
