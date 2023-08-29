@@ -1,0 +1,23 @@
+<h1>Profile</h1>
+
+<%= render "flash_message" %>
+
+<div class="nav">
+  <ul>
+    <li><%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete } %></li>
+  </ul>
+</div>
+
+<div class="photo">
+  <img src="" alt="profile photo" width="360" height="360">
+</div>
+
+<div class="information">
+<h3>Information</h3>
+  <p class="email">Email: <%= @user.email %></p>
+</div>
+
+<div class="posts">
+<h3>Posts</h3>
+  <p>No posts yet!</p>
+</div>
