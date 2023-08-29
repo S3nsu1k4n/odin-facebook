@@ -23,3 +23,8 @@ This is the [final rails project](https://www.theodinproject.com/lessons/ruby-on
 * Deployment instructions
 
 * ...
+
+## Used gems:
+
+- devise
+- responders
