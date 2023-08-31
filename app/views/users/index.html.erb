@@ -1,10 +1,21 @@
 <h1>Users</h1>
 
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+
 <div class="user-list">
   <% @users.each do |user|%>
     <div>
       <div><strong><%= link_to user.name, user_path(user) %></strong></div>
-      <div><%= link_to 'Add friend' %></div>
+      <%= form_with url: friendships_path do |form| %>
+        <%= form.hidden_field '[friendship]friend_id', value: user.id %>
+        <% if current_user != user %>
+          <%= form.submit 'Add friend', disabled: current_user.friends.include?(user) %>
+        <% end %>
+      <% end %>
     </div>
   <% end %>
 </div>
