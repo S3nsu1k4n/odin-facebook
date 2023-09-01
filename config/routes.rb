@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :posts, only: [:new, :create]
   resources :friendships
+  resources :likes, only: [:create]
   # Defines the root path route ("/")
   root "users#show"
 end

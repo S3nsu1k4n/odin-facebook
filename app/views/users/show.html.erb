@@ -13,21 +13,4 @@
   <p class="email">Email: <%= @user.email %></p>
 </div>
 
-<div class="posts">
-<h3>Posts</h3>
-  <div class="new_post">
-    <%= link_to "New Post", new_post_path %>
-  </div>
-  <% @user.posts.each do |post| %>
-    <div class="post">
-      <div class="post-head">
-        <img src=<%= @gravatar_url %> alt="profile photo" width="64" height="64" style="border-radius: 50%">
-        <p class="user-name"><%= @user.name %></p>
-      </div>
-      <div class="post-body">
-        <p class="post-title"><%= post.title %></p>
-        <div class="post-content"><%= post.content %></div>
-      </div>
-    </div>
-  <% end %>
-</div>
+<%= render "posts" %>
