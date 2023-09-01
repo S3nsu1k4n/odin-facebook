@@ -1,13 +1,14 @@
 <div class="posts">
-<h3>Posts</h3>
+<h1>Posts</h1>
   <div class="new_post">
     <%= link_to "New Post", new_post_path %>
+    <%= link_to "Profile", current_user %>
   </div>
-  <% @user.posts.each do |post| %>
+  <% current_user.posts.each do |post| %>
+    <hr>
     <div class="post">
       <div class="post-head">
-        <img src=<%= @gravatar_url %> alt="profile photo" width="64" height="64" style="border-radius: 50%">
-        <p class="user-name"><%= @user.name %></p>
+        <p class="user-name"><%= post.user.name %></p>
       </div>
       <div class="post-body">
         <p class="post-title"><%= post.title %></p>
@@ -23,5 +24,6 @@
         </p>
       </div>
     </div>
+    
   <% end %>
 </div>
