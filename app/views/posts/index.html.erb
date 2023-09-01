@@ -4,6 +4,9 @@
     <%= link_to "New Post", new_post_path %>
     <%= link_to "Profile", current_user %>
   </div>
+
+  <% render 'flash_message' %>
+
   <% current_user.posts.each do |post| %>
     <hr>
     <div class="post">
@@ -16,12 +19,20 @@
       </div>
       <div class="footer">
         <%= "Likes: #{post.likes.count}" %>
-        <p class="post-like">
-          <%= form_with model: post, url: likes_path, method: 'post' do |form| %>
-            <%= form.hidden_field 'post_id', value: post.id %>
-            <%= form.submit 'Like' %>
-          <% end %>
-        </p>
+        <% if !post.liked_by? current_user %>
+          <p class="post-like">
+            <%= form_with model: post, url: likes_path, method: 'post' do |form| %>
+              <%= form.hidden_field 'post_id', value: post.id %>
+              <%= form.submit 'Like' %>
+            <% end %>
+          </p>
+        <% else %>
+          <p class="post-unlike">
+            <%= form_with model: post, url: like_path(post.likes.find_by(user_id: current_user.id)), method: 'delete' do |form| %>
+              <%= form.submit 'Unlike' %>
+            <% end %>
+          </p>
+        <% end %>
       </div>
     </div>
     

@@ -4,10 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
-  has_many :likes
+  has_many :likes, dependent: :destroy
 
   def pending_friend_requests
     friends.reject { |friend| friend.friends.include? self }
