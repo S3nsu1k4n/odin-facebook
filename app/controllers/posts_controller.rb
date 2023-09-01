@@ -4,8 +4,11 @@ class PostsController < ApplicationController
   end
 
   def create
-    p '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
-    p post_params
+    if current_user.posts.build(post_params).save
+      redirect_to current_user
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
