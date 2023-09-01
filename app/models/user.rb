@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
+  has_many :likes
 
   def pending_friend_requests
     friends.reject { |friend| friend.friends.include? self }
