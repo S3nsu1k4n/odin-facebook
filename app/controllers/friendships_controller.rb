@@ -1,4 +1,6 @@
 class FriendshipsController < ApplicationController
+  def index
+  end
   def create
     @user = User.find(friendship_params[:friend_id])
 
@@ -10,6 +12,16 @@ class FriendshipsController < ApplicationController
       @users = User.all
     end
     render 'users/index'
+  end
+
+  def destroy
+    @friendship = Friendship.find(params[:id])
+    @friendship2 = Friendship.find_by(user_id: @friendship.friend_id, friend_id: current_user.id)
+    @friendship.delete
+    @friendship2.delete unless @friendship2.nil?
+
+    flash[:success] = "#{User.find(@friendship.friend_id).name} is not a friend anymore"
+    redirect_to users_path, status: :see_other
   end
 
   private

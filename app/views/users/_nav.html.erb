@@ -2,5 +2,6 @@
   <ul>
     <li><%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete } %></li>
     <li><%= link_to 'Back', users_path %></li>
+    <li><%= link_to "Friend requests (#{current_user.requests_to_accept.count})", friendships_path %></li>
   </ul>
 </div>

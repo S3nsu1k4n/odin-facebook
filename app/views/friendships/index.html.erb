@@ -1,0 +1,17 @@
+<h1>Friends</h1>
+
+<h2>Pending</h2>
+<% current_user.pending_friend_requests.each do |friend| %>
+  <%= friend.name %>
+<% end %>
+
+<h2>Active</h2>
+<% current_user.active_friends.each do |friend| %>
+  <%= friend.name %>
+<% end %>
+
+<h2>Requests</h2>
+<% current_user.requests_to_accept.each do |user| %>
+  <%= user.name %>
+  <%= link_to 'Accept', friendships_path + "?[friendship]friend_id=#{user.id}", data:{turbo_method: :post, turbo_confirm: "Really accept #{user.name} as friend", friendship: [12]} %>
+<% end %>

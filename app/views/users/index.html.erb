@@ -10,10 +10,15 @@
   <% @users.each do |user|%>
     <div>
       <div><strong><%= link_to user.name, user_path(user) %></strong></div>
-      <%= form_with url: friendships_path do |form| %>
-        <%= form.hidden_field '[friendship]friend_id', value: user.id %>
-        <% if current_user != user %>
-          <%= form.submit 'Add friend', disabled: current_user.friends.include?(user) %>
+      <% if current_user != user %>
+        <% if !current_user.friends.include? user %>
+          <%= form_with url: friendships_path do |form| %>
+            <%= form.hidden_field '[friendship]friend_id', value: user.id %>
+            <%= form.submit 'Add friend' %>
+          <% end %>
+        <% else %>
+          <p>(Friend)</p>
+          <%= link_to 'Remove friend', "friendships/#{Friendship.find_by(user_id: current_user.id, friend_id: user.id).id}", data:{turbo_method: :delete, turbo_confirm: "Really unfriend #{user.name}?"} %>
         <% end %>
       <% end %>
     </div>
