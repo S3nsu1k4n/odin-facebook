@@ -1,16 +1,20 @@
 <div class="posts">
 <h1>Posts</h1>
-  <div class="new_post">
-    <%= link_to "New Post", new_post_path %>
-    <%= link_to "Profile", current_user %>
-  </div>
+
+<%= render 'users/nav' %>
+
+<div class="new_post">
+  <%= link_to "New Post", new_post_path %>
+</div>
 
   <% render 'flash_message' %>
 
-  <% current_user.posts.each do |post| %>
+  <% @all_posts.each do |post| %>
     <hr>
     <div class="post">
+      
       <div class="post-head">
+        <p class="user-name"><%= post.created_at %></p>
         <p class="user-name"><%= post.user.name %></p>
       </div>
       <div class="post-body">

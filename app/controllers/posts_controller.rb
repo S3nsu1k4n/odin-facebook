@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   def index
-    
+    posts = current_user.posts
+    friends_posts = current_user.friends.map { |friend| friend.posts }.flatten
+    @all_posts = (posts + friends_posts).sort_by(&:created_at).reverse
   end
 
   def new

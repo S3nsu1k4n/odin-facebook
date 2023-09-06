@@ -1,5 +1,7 @@
 <h1>Friends</h1>
 
+<%= render 'users/nav' %>
+
 <h2>Pending</h2>
 <% current_user.pending_friend_requests.each do |friend| %>
   <%= friend.name %>
