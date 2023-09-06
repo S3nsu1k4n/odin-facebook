@@ -1,0 +1,13 @@
+<h1>New Comment</h1>
+
+<%= link_to "back", current_user %>
+
+<%= form_with model: @comment, url: comments_path do |form| %>
+  <div class="new-post-form">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+    <br>
+    <%= form.submit 'Submit' %>
+
+  </div>
+<% end %>

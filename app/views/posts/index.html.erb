@@ -38,6 +38,10 @@
           </p>
         <% end %>
       </div>
+      <%= form_with model: post.comments, url: new_comment_path, method: 'GET' do |form| %>
+        <%= form.hidden_field 'post_id', value: post.id %>
+        <%= form.submit 'Comment' %>
+      <% end %>
     </div>
     
   <% end %>
