@@ -1,0 +1,26 @@
+<h1>Edit personal information</h1>
+
+<div>
+  <%= form_with model: @user do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    <br>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+    <br>
+    <%= form.label :birthday %>
+    <%= form.date_field :birthday %>
+    <br>
+    <%= form.label :city %>
+    <%= form.text_field :city %>
+    <br>
+    <%= form.label :employment %>
+    <%= form.text_field :employment %>
+    <br>
+    <%= form.label :education %>
+    <%= form.text_field :education %>
+    <br>
+
+    <%= form.submit 'Update' %>
+  <% end %>
+</div>

@@ -12,10 +12,27 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    if @user.update(edit_params)
+      redirect_to user_path, notice: 'Updated information'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def param_user_id
     params.permit(:id)[:id]
+  end
+
+  def edit_params
+    params.require(:user).permit(:name, :email, :birthday, :city, :employment, :education)
   end
 
   def gravatar_url(email)
