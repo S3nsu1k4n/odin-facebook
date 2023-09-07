@@ -10,6 +10,12 @@ class User < ApplicationRecord
   has_many :friends, through: :friendships
   has_many :likes, dependent: :destroy
 
+  after_create :send_welcome_email
+
+  def send_welcome_email
+    SignupMailer.with(user: self).welcome_email.deliver_later
+  end
+
   def pending_friend_requests
     friends.reject { |friend| friend.friends.include? self }
   end

@@ -15,5 +15,5 @@
   <p class="city">City: <%= @user.city %></p>
   <p class="employment">Employment: <%= @user.employment %></p>
   <p class="education">Education: <%= @user.education %></p>
-  <%= link_to 'Edit', edit_user_path %>
+  <%= link_to 'Edit', edit_user_path(current_user.id) %>
 </div>
