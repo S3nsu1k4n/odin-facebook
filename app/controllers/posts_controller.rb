@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
   def index
     posts = current_user.posts
     friends_posts = current_user.friends.map { |friend| friend.posts }.flatten
