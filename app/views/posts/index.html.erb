@@ -43,6 +43,18 @@
         <%= form.submit 'Comment' %>
       <% end %>
     </div>
+
+    <% unless post.comments.empty? %>
+      <div class="comments">
+        <p><strong>Comments</strong></p>
+        <% post.comments.each do |comment| %>
+          <%= comment.user.name %>
+          <br>
+          <%= comment.content %>
+
+        <% end %>
+      </div>
+    <% end %>
     
   <% end %>
 </div>
