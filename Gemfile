@@ -74,3 +74,5 @@ end
 gem "devise", "~> 4.9"
 
 gem "responders", "~> 3.1"
+
+gem "letter_opener", "~> 1.8", group: :development
